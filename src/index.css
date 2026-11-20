@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #08090c;
+    --bg-elevated: #10131a;
+    --bg-surface: #151923;
+    --border-hairline: rgba(255, 255, 255, 0.08);
+    --text-primary: #f4f5f7;
+    --text-secondary: #9aa2b1;
+    --text-muted: #687080;
+    --accent-primary: #e5383b;
+    --accent-hover: #f0484b;
+  }
+
+  html {
+    background-color: #08090c;
+    color: #f4f5f7;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #08090c;
+    color: #f4f5f7;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-mono-tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Custom subtle dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #08090c;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #232836;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #32394d;
+  }
+}
+
+/* Hide scrollbars for horizontal carousels while preserving scrollability */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Safe area padding for iOS/Android bottom bars */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Shimmer animation for skeletons */
+@keyframes anivexa-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    #11141c 25%,
+    #1a1f2b 50%,
+    #11141c 75%
+  );
+  background-size: 200% 100%;
+  animation: anivexa-shimmer 1.6s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .skeleton-shimmer {
+    animation: none;
+  }
+}
